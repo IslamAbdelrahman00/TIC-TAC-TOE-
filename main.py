@@ -24,9 +24,10 @@ LINE = (23, 145, 135)
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption('TIC TAK TOE')
 screen.fill(BG_COLOR)
-,
-# creating lines on the screen
 
+#crating the board values
+board =np.zeros((ROWS,COLUMNS))
+print(board)
 # function to create the drawing lines
 def draw_lines():
     # first horizontal lines
