@@ -83,7 +83,7 @@ def draw_x_o():
 def check_winner(player):
     # vertical win
     for col in range(COLUMNS):
-        if board[0][col] == player and board[1][col] == player and board[1][col] == player:
+        if board[0][col] == player and board[1][col] == player and board[2][col] == player:
             draw_vertical_end_line(col,player)
             return True
     # Horizontal win
@@ -110,7 +110,7 @@ def draw_vertical_end_line(col,player):
     if player ==1:
         color = FIGURES
     elif player ==2:
-        colo = X_COLOR
+        color = X_COLOR
     pg.draw.line(screen,color,(postionX,15),(postionX,HEIGHT-15), LINE_WIDTH)
 
 def draw_Horizontal_end_line(row,player):
@@ -118,14 +118,21 @@ def draw_Horizontal_end_line(row,player):
     if player == 1:
         color = FIGURES
     elif player == 2:
-        colo = X_COLOR
+        color = X_COLOR
     pg.draw.line(screen, color, (15,postionY), (WIDTH - 15,postionY), LINE_WIDTH)
 
 def draw_asc_Diagional__line(player):
-    pass
-
+    if player == 1:
+        color = FIGURES
+    elif player == 2:
+        color = X_COLOR
+    pg.draw.line(screen,color,(15,HEIGHT-15),(WIDTH-15,15),LINE_WIDTH)
 def draw_des_Diagional__line(player):
-    pass
+    if player == 1:
+        color = FIGURES
+    elif player == 2:
+        color = X_COLOR
+    pg.draw.line(screen,color,(15,15),(WIDTH-15,HEIGHT-15),LINE_WIDTH)
 
 def restart():
     pass
@@ -150,11 +157,13 @@ if __name__ == '__main__':
                 if available_spots(c_row,c_column):
                     if player== 1 :
                         mark(c_row,c_column,1)
+                        check_winner(player)
                         player=2
 
                     elif player ==2 :
                         if available_spots(c_row, c_column):
                             mark(c_row,c_column,2)
+                            check_winner(player)
                             player=1
 
                         player=1
