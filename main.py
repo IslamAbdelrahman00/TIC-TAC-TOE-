@@ -14,7 +14,7 @@ WIDTH = 600
 HEIGHT = 600
 LINE_WIDTH = 15
 ROWS = 3
-COLUMNS =3
+COLUMNS = 3
 
 # rgb :
 RED = (255, 0, 0)
@@ -25,9 +25,10 @@ screen = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption('TIC TAK TOE')
 screen.fill(BG_COLOR)
 
-#crating the board values
-board =np.zeros((ROWS,COLUMNS))
-print(board)
+# crating the board values
+board = np.zeros((ROWS, COLUMNS))
+
+
 # function to create the drawing lines
 def draw_lines():
     # first horizontal lines
@@ -39,7 +40,13 @@ def draw_lines():
     # second vertical line
     pg.draw.line(screen, LINE, (400, 0), (400, 600), LINE_WIDTH)
 
+#function to add marks in the matrix
+def mark(row, col, player ):
+    board[row][col]=player
 
+
+mark(0,0,1)
+print(board)
 draw_lines()
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
