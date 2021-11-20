@@ -106,9 +106,20 @@ def check_winner(player):
 
 
 def draw_vertical_end_line(col,player):
-    pass
+    postionX = col*200 +100
+    if player ==1:
+        color = FIGURES
+    elif player ==2:
+        colo = X_COLOR
+    pg.draw.line(screen,color,(postionX,15),(postionX,HEIGHT-15), LINE_WIDTH)
+
 def draw_Horizontal_end_line(row,player):
-    pass
+    postionY = row * 200 + 100
+    if player == 1:
+        color = FIGURES
+    elif player == 2:
+        colo = X_COLOR
+    pg.draw.line(screen, color, (15,postionY), (WIDTH - 15,postionY), LINE_WIDTH)
 
 def draw_asc_Diagional__line(player):
     pass
