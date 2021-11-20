@@ -8,6 +8,8 @@ import numpy as np
 import random as rd
 
 # intializing pygame
+import pygame.draw
+
 pg.init()
 
 # setting the width and the height constents
@@ -16,11 +18,17 @@ HEIGHT = 600
 LINE_WIDTH = 15
 ROWS = 3
 COLUMNS = 3
+FIGURE_C_RADIUS=60
+FIGURE_C_WIDTH=15
+X_WiDTH = 25
+SPACE=55
 
 # rgb :
 RED = (255, 0, 0)
-BACKGROUND_COLOR = (28, 200, 156)
-LINE = (23, 145, 135)
+FIGURES=(224, 213, 56)
+BACKGROUND_COLOR = (97, 97, 94)
+LINE = (46, 46, 44)
+X_COLOR=(26,26,26)
 
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption('TIC TAK TOE')
@@ -62,6 +70,18 @@ def check_full_board():
                 return False
     return True
 
+# function to draw figures on the gui
+def draw_x_o():
+    for r in range(ROWS):
+        for c in range(COLUMNS):
+            if board[r][c] ==1:
+                pg.draw.circle(screen,FIGURES,(int(c*200+200/2),int(r*200+200/2)),FIGURE_C_RADIUS,FIGURE_C_WIDTH) # multiply by 200 to ge the respective corrdinates in the gui and we draw them in the center of the gui
+            elif board[r][c] ==2:
+                pg.draw.line(screen,X_COLOR,(c*200 +SPACE, r*200 + 200-SPACE),(c*200+200-SPACE,r*200+SPACE),X_WiDTH)
+                pg.draw.line(screen,X_COLOR,(c*200+SPACE,r*200+SPACE),(c*200+200-SPACE,r*200+200-SPACE),X_WiDTH)
+
+
+
 draw_lines()
 player = 1
 # Press the green button in the gutter to run the script.
@@ -85,7 +105,13 @@ if __name__ == '__main__':
                         mark(c_row,c_column,1)
                         player=2
 
+                    elif player ==2 :
+                        if available_spots(c_row, c_column):
+                            mark(c_row,c_column,2)
+                            player=1
 
+                        player=1
+                    draw_x_o()
                     print(board)
 
 
