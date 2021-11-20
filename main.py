@@ -44,9 +44,15 @@ def draw_lines():
 def mark(row, col, player ):
     board[row][col]=player
 
+#function to find availble spots returns true if spot is availble
+def available_spots(row,col):
+    if board[row][col] == 0:
+        return True
+    else:
+        return False
 
-mark(0,0,1)
-print(board)
+
+
 draw_lines()
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
