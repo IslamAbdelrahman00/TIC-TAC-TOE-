@@ -80,8 +80,44 @@ def draw_x_o():
                 pg.draw.line(screen,X_COLOR,(c*200 +SPACE, r*200 + 200-SPACE),(c*200+200-SPACE,r*200+SPACE),X_WiDTH)
                 pg.draw.line(screen,X_COLOR,(c*200+SPACE,r*200+SPACE),(c*200+200-SPACE,r*200+200-SPACE),X_WiDTH)
 
+def check_winner(player):
+    # vertical win
+    for col in range(COLUMNS):
+        if board[0][col] == player and board[1][col] == player and board[1][col] == player:
+            draw_vertical_end_line(col,player)
+            return True
+    # Horizontal win
+    for row in range(ROWS):
+        if board[row][0] == player and board[row][1] == player and board[row][2] == player:
+            draw_Horizontal_end_line(row, player)
+            return True
+    # asc diagonal win
+    if board[0][2]== player and board[1][1] == player and board[2][0] ==player:
+        draw_asc_Diagional__line(player)
+        return True
+    # desc diagonal win
+    if board[0][0]== player and board[1][1] == player and board[2][2] ==player:
+        draw_des_Diagional__line(player)
+        return True
+
+    return False
 
 
+
+
+def draw_vertical_end_line(col,player):
+    pass
+def draw_Horizontal_end_line(row,player):
+    pass
+
+def draw_asc_Diagional__line(player):
+    pass
+
+def draw_des_Diagional__line(player):
+    pass
+
+def restart():
+    pass
 draw_lines()
 player = 1
 # Press the green button in the gutter to run the script.
