@@ -5,6 +5,7 @@
 import pygame as pg
 import sys
 import numpy as np
+import random as rd
 
 # intializing pygame
 pg.init()
@@ -18,12 +19,12 @@ COLUMNS = 3
 
 # rgb :
 RED = (255, 0, 0)
-BG_COLOR = (28, 200, 156)
+BACKGROUND_COLOR = (28, 200, 156)
 LINE = (23, 145, 135)
 
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption('TIC TAK TOE')
-screen.fill(BG_COLOR)
+screen.fill(BACKGROUND_COLOR)
 
 # crating the board values
 board = np.zeros((ROWS, COLUMNS))
@@ -62,6 +63,7 @@ def check_full_board():
     return True
 
 draw_lines()
+player = 1
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     while True:
@@ -73,8 +75,20 @@ if __name__ == '__main__':
             if event.type == pg.MOUSEBUTTONDOWN:
                 mouse_x= event.pos[0] # x_cordinates
                 mouse_y= event.pos[1] # y_cordinates
-                print(mouse_x)
-                print(mouse_y)
+                #CORDINTES WHERE BETWEEN 0 AND 600 AND EACH SQAURE IS 200X200 SO WEE NEED TO DIVID BY 200 to get THE x and y corrdinates in our board matrix
+
+                c_column= int(mouse_x // 200)
+                c_row = int(mouse_y//200)
+
+                if available_spots(c_row,c_column):
+                    if player== 1 :
+                        mark(c_row,c_column,1)
+                        player=2
+
+
+                    print(board)
+
+
 
 
         pg.display.update()
