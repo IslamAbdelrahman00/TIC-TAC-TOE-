@@ -68,5 +68,14 @@ if __name__ == '__main__':
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 sys.exit()
+
+            #if we click the screen we save the cordintess of the click location
+            if event.type == pg.MOUSEBUTTONDOWN:
+                mouse_x= event.pos[0] # x_cordinates
+                mouse_y= event.pos[1] # y_cordinates
+                print(mouse_x)
+                print(mouse_y)
+
+
         pg.display.update()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
