@@ -40,18 +40,26 @@ def draw_lines():
     # second vertical line
     pg.draw.line(screen, LINE, (400, 0), (400, 600), LINE_WIDTH)
 
-#function to add marks in the matrix
-def mark(row, col, player ):
-    board[row][col]=player
 
-#function to find availble spots returns true if spot is availble
-def available_spots(row,col):
+# function to add marks in the matrix
+def mark(row, col, player):
+    board[row][col] = player
+
+
+# function to find availble spots returns true if spot is availble
+def available_spots(row, col):
     if board[row][col] == 0:
         return True
     else:
         return False
 
-
+#function to check if all fields in the board became full
+def check_full_board():
+    for row in range(ROWS):
+        for col in range(COLUMNS):
+            if board[row][col] ==0:
+                return False
+    return True
 
 draw_lines()
 # Press the green button in the gutter to run the script.
