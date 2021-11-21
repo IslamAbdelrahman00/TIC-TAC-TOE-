@@ -1,7 +1,8 @@
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-# importing pygamee library
+
+# ISLAM ABDELRAHMAN GitHUB repo for the https://github.com/IslamAbdelrahman00/TIC-TAC-TOE-
+
+# importing pygame library
 import pygame as pg
 import sys
 import numpy as np
