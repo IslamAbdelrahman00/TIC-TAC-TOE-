@@ -1,6 +1,6 @@
 
 
-# ISLAM ABDELRAHMAN GitHUB repo for the https://github.com/IslamAbdelrahman00/TIC-TAC-TOE-
+# ISLAM ABDELRAHMAN GitHUB repo of the game including all the commits  https://github.com/IslamAbdelrahman00/TIC-TAC-TOE-
 
 # importing pygame library
 import pygame as pg
