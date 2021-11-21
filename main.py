@@ -262,7 +262,6 @@ if __name__ == '__main__':
                             game_over = True
                         player = 1
                     draw_x_o()
-                    print(board)
 
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_r:
