@@ -53,6 +53,23 @@ def draw_lines():
 def mark(row, col, player):
     board[row][col] = player
 
+#function for ai to tick a square
+def aiMark():
+    highestScore= -1000
+    bestMove_X= 0
+    bestMove_Y=0
+    for row in range(ROWS):
+        for col in range(COLUMNS):
+            if available_spots(row,col):
+                board[row][col]= 2
+                score = minimax(board,0,False)
+                board[row][col] = 0
+                if(score> highestScore):
+                    highestScore=score
+                    bestMove_X=row
+                    bestMove_Y=col
+    board[bestMove_X][bestMove_Y]=2
+    return
 
 # function to find availble spots returns true if spot is availble
 def available_spots(row, col):
