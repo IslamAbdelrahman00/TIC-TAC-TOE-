@@ -8,11 +8,10 @@ import numpy as np
 import random as rd
 
 # intializing pygame
-import pygame.draw
 
 pg.init()
 
-# setting the width and the height constents
+# setting the  constents
 WIDTH = 600
 HEIGHT = 600
 LINE_WIDTH = 15
@@ -104,7 +103,7 @@ def check_winner(player):
 
 
 
-
+#function to draw winning vertival line
 def draw_vertical_end_line(col,player):
     postionX = col*200 +100
     if player ==1:
@@ -113,6 +112,7 @@ def draw_vertical_end_line(col,player):
         color = X_COLOR
     pg.draw.line(screen,color,(postionX,15),(postionX,HEIGHT-15), LINE_WIDTH)
 
+#function to draw winning Horizontal  line
 def draw_Horizontal_end_line(row,player):
     postionY = row * 200 + 100
     if player == 1:
@@ -121,12 +121,15 @@ def draw_Horizontal_end_line(row,player):
         color = X_COLOR
     pg.draw.line(screen, color, (15,postionY), (WIDTH - 15,postionY), LINE_WIDTH)
 
+#function to draw winning ascending diagonal line
 def draw_asc_Diagional__line(player):
     if player == 1:
         color = FIGURES
     elif player == 2:
         color = X_COLOR
     pg.draw.line(screen,color,(15,HEIGHT-15),(WIDTH-15,15),LINE_WIDTH)
+
+#function to draw winning descending diagonal line
 def draw_des_Diagional__line(player):
     if player == 1:
         color = FIGURES
@@ -134,10 +137,18 @@ def draw_des_Diagional__line(player):
         color = X_COLOR
     pg.draw.line(screen,color,(15,15),(WIDTH-15,HEIGHT-15),LINE_WIDTH)
 
+#function to restart the game
 def restart():
-    pass
+    screen.fill(BACKGROUND_COLOR)
+    draw_lines()
+    player=1
+    for row in range(ROWS):
+        for col in range(COLUMNS):
+            board[row][col]=0
+
 draw_lines()
 player = 1
+game_over = False
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     while True:
@@ -146,7 +157,7 @@ if __name__ == '__main__':
                 sys.exit()
 
             #if we click the screen we save the cordintess of the click location
-            if event.type == pg.MOUSEBUTTONDOWN:
+            if event.type == pg.MOUSEBUTTONDOWN and not game_over:
                 mouse_x= event.pos[0] # x_cordinates
                 mouse_y= event.pos[1] # y_cordinates
                 #CORDINTES WHERE BETWEEN 0 AND 600 AND EACH SQAURE IS 200X200 SO WEE NEED TO DIVID BY 200 to get THE x and y corrdinates in our board matrix
@@ -157,21 +168,25 @@ if __name__ == '__main__':
                 if available_spots(c_row,c_column):
                     if player== 1 :
                         mark(c_row,c_column,1)
-                        check_winner(player)
+                        if check_winner(player):
+                            game_over=True
                         player=2
 
                     elif player ==2 :
                         if available_spots(c_row, c_column):
                             mark(c_row,c_column,2)
-                            check_winner(player)
+                            if check_winner(player):
+                                game_over = True
                             player=1
 
                         player=1
                     draw_x_o()
                     print(board)
 
-
-
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_r:
+                    restart()
+                    game_over=False
 
         pg.display.update()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
