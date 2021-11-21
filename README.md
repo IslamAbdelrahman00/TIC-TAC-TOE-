@@ -4,3 +4,7 @@
 * ### the game uses Minimax algorithim to tick for the bot 
 * ### the player has first move and is given the circle figure
 * ### to restart the game press r on your keyboard 
+* ## Requirements:
+  * ###please install pygame and numpy libraries 
+    * pip install pygame
+    * pip install numpy

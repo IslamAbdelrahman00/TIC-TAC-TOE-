@@ -264,6 +264,13 @@ if __name__ == '__main__':
                         player = 1
                     draw_x_o()
 
+                #elif player == 2:
+                 #   if available_spots(c_row, c_column):
+                  #      mark(c_row, c_column, 2)
+                   #     if check_winner(player):
+                    #        game_over = True
+                     #   player = 1
+
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_r:
                     restart()
